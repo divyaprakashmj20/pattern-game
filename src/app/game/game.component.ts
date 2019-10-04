@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-game",
-  templateUrl: "./game.component.html",
-  styleUrls: ["./game.component.scss"]
+  selector: 'app-game',
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
   colorpicker = [
-    { id: 1, color: "red" },
-    { id: 2, color: "blue" },
-    { id: 3, color: "green" },
-    { id: 4, color: "yellow" }
+    { id: 1, color: 'red' },
+    { id: 2, color: 'blue' },
+    { id: 3, color: 'green' },
+    { id: 4, color: 'yellow' }
   ];
 
   waitforinput = false;
@@ -19,22 +19,22 @@ export class GameComponent implements OnInit {
   userInputsize = 0;
   max = 4;
   min = 1;
-  generatedRandomColor = "#ffffff00";
+  generatedRandomColor = '#ffffff00';
   Difficulty = 4;
   level ;
   lost = false;
-  nextLevel=false;
+  nextLevel = false;
   levelComplete = false;
   gameWon = false;
 
   constructor() {}
 
   ngOnInit() {
-    this.level =1;
+    this.level = 1;
   }
 
-  randomGenerateColorsNext(){
-    this.levelComplete= false;
+  randomGenerateColorsNext() {
+    this.levelComplete = false;
     this.randomGenerateColors();
   }
 
@@ -47,7 +47,7 @@ export class GameComponent implements OnInit {
         Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
       );
     }
-    console.log(this.arr);
+    console.log(this.arr,'just in case you have trouble remembering the order of the colors :)');
     this.displayColors(this.arr);
   }
 
@@ -57,7 +57,7 @@ export class GameComponent implements OnInit {
     (function() {
       let i = 0;
       (function k() {
-        that.generatedRandomColor = "#ffffff00";
+        that.generatedRandomColor = '#ffffff00';
         setTimeout(() => {
           that.colorpicker.map(j => {
             if (j.id === arr[i]) {
@@ -68,7 +68,7 @@ export class GameComponent implements OnInit {
             i++;
             setTimeout(k, 800);
           } else {
-            that.generatedRandomColor = "#ffffff00";
+            that.generatedRandomColor = '#ffffff00';
             that.waitforinput = true;
             // that.Difficulty += 2 ;
           }
@@ -77,32 +77,30 @@ export class GameComponent implements OnInit {
     })();
   }
 
-  constructUserInput(id){
-    if(this.waitforinput && this.lost === false){
+  constructUserInput(id) {
+    if (this.waitforinput && this.lost === false) {
       this.userInputsize++;
       this.userArr.push(id);
-      if(JSON.stringify(this.userArr) !== JSON.stringify(this.arr.slice(0,this.userInputsize))){
+      if (JSON.stringify(this.userArr) !== JSON.stringify(this.arr.slice(0, this.userInputsize))) {
         // this.waitforinput = false;
         this.userInputsize = 0;
-        this.userArr=[];
-        this.arr=[];
+        this.userArr = [];
+        this.arr = [];
         this.Difficulty = 4;
-        this.level = "lose";
+        this.level = 'lose';
         this.lost = true;
-        console.log("you lost");
-        
-      }
-      else{
-        if(this.userInputsize === this.arr.length){
+        // console.log("you lost");
+      } else {
+        if (this.userInputsize === this.arr.length) {
           this.level ++;
           this.Difficulty += 2;
-          this.userArr=[];
-          this.arr=[];
+          this.userArr = [];
+          this.arr = [];
           this.userInputsize = 0;
-          if(this.userInputsize === this.userArr.length){
+          if (this.userInputsize === this.userArr.length) {
             this.nextLevel = true;
             this.levelComplete = true;
-            if(this.level === 11){
+            if (this.level === 11) {
               this.gameWon = true;
             }
           }
@@ -111,13 +109,14 @@ export class GameComponent implements OnInit {
     }
   }
 
-  restart(){
+  restart() {
     this.lost = false;
     this.waitforinput = false;
     this.level = 1;
     this.nextLevel = false;
     this.levelComplete = false;
     this.gameWon = false;
+    this.Difficulty = 4;
   }
-  
+
 }

@@ -6,15 +6,15 @@
     <button *ngFor="let color of colorpicker" id="{{color.id}}" class="colorpicker"
       [ngStyle]="{'background-color': color.color}" (click)="constructUserInput(color.id)"></button>
   </div>
-  <div *ngIf = "waitforinput && !lost && !levelComplete" class="user-alert">Please click the colors in the order that was shown</div>
+  <div *ngIf = "waitforinput && !lost && !levelComplete" class="user-alert normal-text">Please click the colors in the order that was shown</div>
 
   <div *ngIf = "!waitforinput" class="displaycolor-holder">
     <div class="displaycolor" [ngStyle]= "{'background-color': generatedRandomColor}"></div>
   </div>
-  <div *ngIf = "!waitforinput" class="user-alert">concentrate on the order of the colors</div>
+  <div *ngIf = "!waitforinput" class="user-alert normal-text">Remember order of the colors</div>
 
-  <div *ngIf = "waitforinput && level > 1 && nextLevel && levelComplete" class="user-alert">Congrats Click Next to Play Next Level</div>
-  <div *ngIf = "lost" class="user-alert" >You Lost </div>
+  <div *ngIf = "waitforinput && level > 1 && nextLevel && levelComplete" class="user-alert success">Congrats Click Next to Play Next Level</div>
+  <div *ngIf = "lost" class="user-alert error" >You Lost, click restart to start again </div>
 
 
   <div class="play-btn-container">
@@ -30,4 +30,7 @@
 
 </div>
 
-<div *ngIf = "gameWon" class="user-alert">Congragulations you won the game, Restart to start again</div>
+<div *ngIf = "gameWon" class="user-alert success">Congragulations you won the game</div>
+<div class="play-btn-container">
+<button *ngIf="gameWon" class="play-btn"   (click)="restart()">Play Again</button>
+</div>

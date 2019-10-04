@@ -1,5 +1,5 @@
 .colorpicker{
-    height: 33vh;
+    height: 24vh;
     flex: 0 0 25%;
     // width: 50px;
 }
@@ -20,7 +20,7 @@
 
 .displaycolor{
     border: 1px solid black;
-    height: 33vh;
+    height: 24vh;
     flex: 0 0 25%;
 }
 
@@ -35,7 +35,7 @@
 
 .play-btn{
     width: 220px;
-    height: 13vh;
+    height: 9vh;
     background-color: #10ce27;
     font-size: 25px;
     font-family: cursive;
@@ -44,9 +44,13 @@
 }
 
 .level{
-    font-size: 8vh;
+    font-size: 7vh;
     text-align: right;
-    margin-right: 20%;
+    margin: 4%;
+    margin: 4%;
+    color: darkblue;
+    font-weight: bold;
+    font-family: fantasy;
 }
 
 .user-alert{
@@ -54,5 +58,22 @@
     justify-content: center;
     display: flex;
     margin-top: 16px;
-    font-size: 25px;
+    font-size: 4vh;
+    font-family: monospace;
+    font-size: 40px;
+    font-weight: 600;
 }
+
+.normal-text{
+    color: rebeccapurple;
+}
+
+.success{
+    color: #516bf0;
+}
+
+.error{
+    color: red;
+}
+
+
